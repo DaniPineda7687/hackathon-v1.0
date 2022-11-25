@@ -5,7 +5,6 @@ import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
 import { useContext, useEffect, useMemo, useState } from 'react';
 import Geocoder from "./Geocoder";
 import { LocationContext } from "../LocationProvider";
-import { colegios } from "../colegios";
 import { colegiosCerca } from "../services/colegiosCercanos";
 export default function Map(){
     const [popupInfo, setPopupInfo] = useState(null);
@@ -13,7 +12,7 @@ export default function Map(){
     const [location, dispatch] = useContext(LocationContext);
     useEffect(()=>{
       colegiosCerca([location.lat,location.lng],2).then(res=>setColegiosCercanos(res))
-    },[coles])
+    },[coles,location])
     const pins = useMemo(
         () =>
           coles.map((item, index) => (
