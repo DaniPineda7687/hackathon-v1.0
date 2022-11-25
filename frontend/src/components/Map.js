@@ -2,13 +2,17 @@ import ReactMapGL, { GeolocateControl, Marker, NavigationControl, Popup } from "
 import "mapbox-gl/dist/mapbox-gl.css"
 import "../styles/InfoCards.css"
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import Geocoder from "./Geocoder";
 import { LocationContext } from "../LocationProvider";
 import { colegios } from "../colegios";
+import { colegiosCerca } from "../services/colegiosCercanos";
 export default function Map(){
     const [popupInfo, setPopupInfo] = useState(null);
     const [location, dispatch] = useContext(LocationContext);
+    useEffect(()=>{
+      colegiosCerca([4.126964,-73.639689],2)
+    },[])
     const pins = useMemo(
         () =>
           colegios.map((item, index) => (
