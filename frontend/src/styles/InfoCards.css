@@ -43,6 +43,28 @@
     font-size: 2rem;
     margin-bottom: 2rem;
 }
+li{
+    list-style: none;
+}
+.title__table{
+    font-size: 1.8rem;
+}
+.horarios__container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 3rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.jornada__container li{
+    font-size: 1.2rem;
+}
+.title__jornada{
+    font-size: 1.6rem;
+}
+.title__level{
+    font-size: 1.4rem;
+}
 @media screen and (min-width:350px) {
     .map__container{
         height: calc(100vh - 10rem);

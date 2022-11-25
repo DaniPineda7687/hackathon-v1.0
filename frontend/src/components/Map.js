@@ -96,17 +96,19 @@ export default function Map(){
                         <h2>{popupInfo.nombre}</h2> 
                         <table>
                           <tr>
-                            <th>CUPOS DISPONIBLES SEGÚN JORNADA</th>
+                            <th className="title__table">CUPOS DISPONIBLES SEGÚN JORNADA</th>
                           </tr>
+                          <div className="horarios__container">
+
                           {
                             Object.keys(popupInfo.jornada).map(valor=>{
                               return(
-                                <>
-                                <tr><h3>{`${valor.toUpperCase()}`}</h3></tr>
+                                <div className="jornada__container">
+                                <tr><h3 className="title__jornada">{`${valor.toUpperCase()}`}</h3></tr>
                                 {Object.keys(popupInfo.jornada[valor].escolaridad).map(educacion=>{
                                   return(
                                     <>
-                                      <tr><h4>{educacion}</h4></tr>
+                                      <tr><h4 className="title__level">{educacion}</h4></tr>
                                       <ul>
                                         {Object.keys(popupInfo.jornada[valor].escolaridad[educacion]).map(grado=>{
                                           return(
@@ -117,10 +119,11 @@ export default function Map(){
                                     </>
                                   )
                                 })}
-                                </>
+                                </div>
                               )
                             })
                           }
+                          </div>
                         </table>
                     </div>
                 : 
