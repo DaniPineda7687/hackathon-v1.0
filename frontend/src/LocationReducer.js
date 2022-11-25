@@ -1,4 +1,4 @@
-const initialLocation={lat:"1",lng:"1", conditions:[{perimeter:0,level:"",schedule:[]}]}
+const initialLocation={lat:"1",lng:"1", conditions:[{perimeter:1,level:"",schedule:[]}]}
 function locationReducer(state, action){
     switch(action.type){
         case "UPDATE_LOCATION":
