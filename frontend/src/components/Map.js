@@ -9,15 +9,14 @@ import { colegios } from "../colegios";
 import { colegiosCerca } from "../services/colegiosCercanos";
 export default function Map(){
     const [popupInfo, setPopupInfo] = useState(null);
-    const [colegioCercanos,setColegiosCercanos]= useState([])
+    const [coles,setColegiosCercanos]= useState([])
     const [location, dispatch] = useContext(LocationContext);
     useEffect(()=>{
-      setColegiosCercanos(colegiosCerca([4.126964,-73.639689],2));
-      console.log(colegioCercanos)
-    },[])
+      colegiosCerca([location.lat,location.lng],2).then(res=>setColegiosCercanos(res))
+    },[coles])
     const pins = useMemo(
         () =>
-          colegios.map((item, index) => (
+          coles.map((item, index) => (
             
             <Marker
               key={`marker-${index}`}
@@ -31,7 +30,7 @@ export default function Map(){
             >  
             </Marker>
           )),
-        []
+        [coles]
       );
 /**
  * 
