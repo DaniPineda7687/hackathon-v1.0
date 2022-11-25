@@ -33,8 +33,29 @@
 .card__visible{
     bottom: 0;
 }
+
+.more__information__container h2{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
 @media screen and (min-width:350px) {
     .map__container{
         height: calc(100vh - 10rem);
+    }
+}
+@media screen and (min-width:900px) {
+    .card__more__information{
+        border-radius: 0px 40px 40px 0px;
+        top: 0;
+        width: 30vw;
+        max-width: 500px;
+        height: calc(100vh - 0rem);
+        left: 0;
+    }
+    .card__hidden{
+        left: -100%;
+    }
+    .card__visible{
+        left: 0;
     }
 }
