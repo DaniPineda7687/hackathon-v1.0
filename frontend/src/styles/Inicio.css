@@ -13,15 +13,8 @@
 	--main-color: #5EFF63;
 }
 
-body {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	background: var(--bg-color);
-	color: var(--text-color);
-}
-
-header {
+.header__home{
+	background-color: #222327;
 	position: fixed;
 	width: 100%;
 	top: 0;
@@ -33,22 +26,24 @@ header {
 	background: transparent;
 	padding: 28px 12%;
 	transition: all .50s ease;
+	
+	background-color: #222222;
 }
 
-.logo {
+.header__home .logo {
 	display: flex;
 	align-items: center;
 }
-.logo img{
+.header__home .logo img{
 	width: 150px;
 	height: 150px;
 }
 
-.navbar {
+.header__home .navbar {
 	display: flex;
 }
 
-.navbar button {
+.header__home .navbar button {
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	padding: 10px 30px;
@@ -60,7 +55,7 @@ header {
 	color: #fff;
 }
 
-.navbar button:hover {
+.header__home .navbar button:hover {
 	cursor: pointer;
 	letter-spacing: 0.25em;
 	background: var(--main-color);
@@ -68,25 +63,25 @@ header {
 	box-shadow: 0 0 20px var(--main-color);
 }
 
-.navbar button::before {
+.header__home .navbar button::before {
 	content: '';
 	position: absolute;
 	inset: 2px;
 	background: #222222;
 }
 
-.navbar button span {
+.header__home .navbar button span {
 	position: relative;
 	z-index: 1;
 }
 
-.navbar button i {
+.header__home .navbar button i {
 	position: absolute;
 	inset: 0;
 	display: block;
 }
 
-.navbar button i::before {
+.header__home .navbar button i::before {
 	content: '';
 	position: absolute;
 	border: 2px solid var(--main-color);
@@ -99,13 +94,13 @@ header {
 	transition: 0.5s;
 }
 
-.navbar button:hover i::before {
+.header__home .navbar button:hover i::before {
 	border: 2px solid var(--main-color);
 	width: 20px;
 	left: 20%;
 }
 
-.navbar button i::after {
+.header__home .navbar button i::after {
 	content: '';
 	position: absolute;
 	border: 2px solid var(--main-color);
@@ -118,12 +113,12 @@ header {
 	transition: 0.5s;
 }
 
-.navbar button:hover i::after {
+.header__home .navbar button:hover i::after {
 	width: 20px;
 	left: 80%;
 }
 
-.main button {
+.header__home .main button {
 	font-size: 18px;
 	color: #e1e1e1;
 	font-family: inherit;

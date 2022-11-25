@@ -1,4 +1,6 @@
-
+.map__container{
+    padding: 0 4rem;
+}
 .school__card__header{
     margin-bottom: 1rem;
     font-size: 1.8rem;

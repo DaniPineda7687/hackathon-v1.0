@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
 import "../styles/Inicio.css"
 
-export const Inicio = ()=>{
+const Inicio = ()=>{
 
     return(
         <>
-        <header>
+        <header className="header__home">
 		<a href="#" class="logo"><img src="/resources/logo.png" alt="logo"/></a>
 		<ul class="navbar">
 			<li><Link to="/mapa" class="active"><button><span>¡Buscar Colegio!</span><i></i></button></Link></li>
@@ -21,3 +21,4 @@ export const Inicio = ()=>{
         </>
     )
 }
+export default Inicio;
