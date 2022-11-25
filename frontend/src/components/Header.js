@@ -1,9 +1,11 @@
 import "../styles/Header.css"
 export default function Header(){
     return(
-        <header className="header__container">
-            <h1>BUSCA TU COLEGIO AHORA</h1>
-            
-        </header>
+        <header>
+            <a href="#" class="logo"><img src="/resources/logo.png" alt="logo"/></a>
+            <div class="main">
+                <a href="#" class="user"><button>Manual</button></a>
+            </div>
+	</header>
     )
 }

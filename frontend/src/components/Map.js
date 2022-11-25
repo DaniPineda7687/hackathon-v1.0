@@ -13,7 +13,7 @@ export default function Map(){
     const [coles,setColegiosCercanos]= useState([])
     const [location, dispatch] = useContext(LocationContext);
     useEffect(()=>{
-      colegiosCerca([location.lat,location.lng],2,location.conditions).then(res=>setColegiosCercanos(res))
+      colegiosCerca([location.lat,location.lng],2).then(res=>setColegiosCercanos(res))
       //dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng}})
 
     },[coles])

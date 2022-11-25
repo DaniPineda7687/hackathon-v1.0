@@ -1,9 +1,12 @@
+
 .school__card__header{
     margin-bottom: 1rem;
     font-size: 1.8rem;
+    color: #000000;    
 }
 .school__card__content{
     font-size: 1.4rem;
+    color: #000000; 
 }
 .school__card__content p a{
     display: inline-block;
@@ -27,6 +30,7 @@
     box-shadow: 0px -15px 9px -3px rgba(0,0,0,0.1);
     transition: all .25s;
     padding: 2.5rem 4rem;
+    color: #000000; 
 }
 .card__hidden{
     bottom: -100%;
