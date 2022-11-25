@@ -9,9 +9,11 @@ import { colegios } from "../colegios";
 import { colegiosCerca } from "../services/colegiosCercanos";
 export default function Map(){
     const [popupInfo, setPopupInfo] = useState(null);
+    const [colegioCercanos,setColegiosCercanos]= useState([])
     const [location, dispatch] = useContext(LocationContext);
     useEffect(()=>{
-      colegiosCerca([4.126964,-73.639689],2)
+      setColegiosCercanos(colegiosCerca([4.126964,-73.639689],2));
+      console.log(colegioCercanos)
     },[])
     const pins = useMemo(
         () =>
