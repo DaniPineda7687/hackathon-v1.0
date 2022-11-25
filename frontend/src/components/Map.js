@@ -7,7 +7,7 @@ import Geocoder from "./Geocoder";
 import { LocationContext } from "../LocationProvider";
 export default function Map(){
     const [location, dispatch] = useContext(LocationContext);
-    console.log(location)
+    console.log(location);
     return(
         <ReactMapGL
           mapboxAccessToken='pk.eyJ1IjoiZGFuaXBpbmVkYTc2ODciLCJhIjoiY2xhdm1rd3IwMDczdTNzbXoyZXJhN29taCJ9.30hpkvZsDhbXyboZaVMtCw'
