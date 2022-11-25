@@ -1,4 +1,4 @@
-[{
+export const colegios = [{
   "nombre": "FRANCISCO JOSE DE CALDAS",
   "direc": "CR 26 35-68 CENTRO, Villavicencio, Meta",
   "cuposTotales": 1000,
@@ -96,13 +96,8 @@
     4.1568888414394225,
     -73.65092912334488
   ]
-},{
-  "nombre": "Colegio Nuestra Señora de Fatima",
-  "direc": "Calle 44 #35b2a 35b-52, Villavicencio, Meta",
-  "cuposTotales": 1000,
-  "cuposDisponibles": 1000,
-  "geometry": []
-},{
+},
+{
   "nombre": "Colegio La Salle",
   "direc": "Cl. 39 #34-56, Villavicencio, Meta",
   "cuposTotales": 1000,
