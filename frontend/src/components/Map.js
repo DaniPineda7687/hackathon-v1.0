@@ -99,7 +99,7 @@ export default function Map(){
                             <th>Cupos según cursos</th>
                           </tr>
                           {
-                            //Object.keys(popupInfo.jornada?.tarde.escolaridad?.primaria).map(posicion => console.log(popupInfo.jornada?.tarde.escolaridad?.primaria.posicion))
+                            
                             //console.log(Object.keys(popupInfo.jornada?.tarde.escolaridad?.primaria))
                           }
                             <tr>
