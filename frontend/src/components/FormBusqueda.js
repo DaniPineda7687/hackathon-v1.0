@@ -59,6 +59,7 @@ export default function FormBusqueda(){
             return;
         }
         console.log("todo bien")
+        dispatch({type:"UPDATE_CONDITIONS", payload:{lat:location.lat,lng:location.lng,conditions:[{perimeter:distance,level:level,schedule:optionsSchedule}]}})
       }
 
     return(
