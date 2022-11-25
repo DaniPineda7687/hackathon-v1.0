@@ -31,6 +31,7 @@ export default function Map(){
  * 
  */
     return(
+        <div className="map__container">
         <ReactMapGL
           mapboxAccessToken='pk.eyJ1IjoiZGFuaXBpbmVkYTc2ODciLCJhIjoiY2xhdm1rd3IwMDczdTNzbXoyZXJhN29taCJ9.30hpkvZsDhbXyboZaVMtCw'
           initialViewState={{
@@ -75,5 +76,20 @@ export default function Map(){
             />
             <Geocoder/>
         </ReactMapGL>
+        <div className={`card__more__information ${popupInfo==null ? "card__hidden" : "card__visible"}` }>
+            {
+                popupInfo 
+                ? 
+                    <div className="more__information__container">
+                        <h2>{popupInfo.nombre}</h2> 
+                        <table>
+                            
+                        </table>
+                    </div>
+                : 
+                ""
+            }
+        </div>
+        </div>
     );
 }

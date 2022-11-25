@@ -9,9 +9,7 @@ function App() {
     <div className="App">
       <LocationProvider>
         <Header/>
-        <div className='map__container'>
-          <Map/>
-        </div>
+        <Map/>
       </LocationProvider>
     </div>
   );
