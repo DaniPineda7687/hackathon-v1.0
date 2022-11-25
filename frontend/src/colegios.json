@@ -3,6 +3,77 @@
   "direc": "CR 26 35-68 CENTRO, Villavicencio, Meta",
   "cuposTotales": 1000,
   "cuposDisponibles": 1000,
+  "jornada":{
+    "mañana":{
+      "escolaridad":{
+        "preescolar":{
+          "prequinder":10,
+          "quinder":10
+        },
+        "primaria":{
+          "primero":20,
+          "segundo":30,
+          "tercero":30,
+          "cuarto":35,
+          "quinto":40
+        },
+        "bachiller":{
+          "sexto":40,
+          "septimo":40,
+          "octavo": 45,
+          "noveno":50,
+          "decimo":40,
+          "once":50
+        }
+      }
+    },
+    "tarde":{
+      "escolaridad":{
+        "preescolar":{
+          "prequinder":10,
+          "quinder":10
+        },
+        "primaria":{
+          "primero":20,
+          "segundo":30,
+          "tercero":30,
+          "cuarto":35,
+          "quinto":40
+        },
+        "bachiller":{
+          "sexto":40,
+          "septimo":40,
+          "octavo": 45,
+          "noveno":50,
+          "decimo":40,
+          "once":50
+        }
+      }
+    },
+    "noche":{
+      "escolaridad":{
+        "preescolar":{
+          "prequinder":10,
+          "quinder":10
+        },
+        "primaria":{
+          "primero":20,
+          "segundo":30,
+          "tercero":30,
+          "cuarto":35,
+          "quinto":40
+        },
+        "bachiller":{
+          "sexto":40,
+          "septimo":40,
+          "octavo": 45,
+          "noveno":50,
+          "decimo":40,
+          "once":50
+        }
+      }
+    }
+  },
   "geometry": [
     4.149770405104225,
     -73.6316692037746
