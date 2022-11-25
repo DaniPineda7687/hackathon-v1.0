@@ -99,24 +99,34 @@ export default function Map(){
                             <th>Cupos según cursos</th>
                           </tr>
                           {
-                            //Object.keys(popupInfo.jornada?.tarde.escolaridad?.primaria).map(posicion => console.log(popupInfo.jornada?.tarde.escolaridad?.primaria.posicion))
+                            Object.keys(popupInfo.jornada).map(valor=>{
+                              return(
+                                <>
+                                <tr>{`${valor}`}</tr>
+                                {Object.keys(popupInfo.jornada[valor].escolaridad).map(educacion=>{
+                                  return(
+                                    <>
+                                      <tr>{" -"+educacion+":"}</tr>
+                                      <ul>
+                                        {Object.keys(popupInfo.jornada[valor].escolaridad[educacion]).map(grado=>{
+                                          return(
+                                            <li>{`${grado}: ${popupInfo.jornada[valor].escolaridad[educacion][grado]}`}</li>
+                                          )
+                                        })}
+                                      </ul>
+                                    </>
+                                  )
+                                })}
+                                </>
+                              )
+                            })
+                            //Object.keys(popupInfo.jornada.tarde.escolaridad.primaria).map(prop =>{
+                              //return(<tr>{`${prop} : ${popupInfo.jornada.tarde.escolaridad.primaria[prop]}`}</tr>)
+                            //})
+
+
                             //console.log(Object.keys(popupInfo.jornada?.tarde.escolaridad?.primaria))
                           }
-                            <tr>
-                                <th>{popupInfo.jornada.mañana.escolaridad.bachiller.sexto}</th>
-                                <th>Contact</th>
-                                <th>Country</th>
-                            </tr>
-                            <tr>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                            </tr>
-                            <tr>
-                                <td>Centro comercial Moctezuma</td>
-                                <td>Francisco Chang</td>
-                                <td>Mexico</td>
-                            </tr>
                         </table>
                     </div>
                 : 
