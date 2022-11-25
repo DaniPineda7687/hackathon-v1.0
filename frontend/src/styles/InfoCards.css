@@ -1,0 +1,11 @@
+.school__card__header{
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+.school__card__content{
+    font-size: 1.4rem;
+}
+.school__card__content p a{
+    display: inline-block;
+    margin-top: 1.2rem;
+}

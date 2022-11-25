@@ -1,15 +1,14 @@
-import ReactMapGL, { GeolocateControl, Marker, NavigationControl } from "react-map-gl"
+import ReactMapGL, { GeolocateControl, Marker, NavigationControl, Popup } from "react-map-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
+import "../styles/InfoCards.css"
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
-import { useContext, useMemo } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import Geocoder from "./Geocoder";
 import { LocationContext } from "../LocationProvider";
 import { colegios } from "../colegios";
 export default function Map(){
+    const [popupInfo, setPopupInfo] = useState(null);
     const [location, dispatch] = useContext(LocationContext);
-    console.log(colegios)
-
-
     const pins = useMemo(
         () =>
           colegios.map((item, index) => (
@@ -19,17 +18,17 @@ export default function Map(){
               longitude={item.geometry[1]}
               latitude={item.geometry[0]}
               anchor="bottom"
-            >
+              onClick={e => {
+                e.originalEvent.stopPropagation();
+                setPopupInfo(item);
+              }}
+            >  
             </Marker>
           )),
         []
       );
 /**
- * <Marker
-            latitude={location.lat}
-            longitude={location.lng}
-            draggable 
-            />
+ * 
  */
     return(
         <ReactMapGL
@@ -37,13 +36,38 @@ export default function Map(){
           initialViewState={{
             longitude:-73.6301814,
             latitude:4.152885,
-            zoom:8,
+            zoom:13,
           }}
           mapStyle="mapbox://styles/mapbox/streets-v11"
         >
-          
+            <Marker
+                latitude={location.lat}
+                longitude={location.lng}
+                draggable 
+                color="red"
+                scale={2}
+            >
+            </Marker>
             {pins}
-            
+            {popupInfo && (
+                <Popup
+                    anchor="top"
+                    longitude={popupInfo.geometry[1]}
+                    latitude={popupInfo.geometry[0]}
+                    onClose={() => setPopupInfo(null)}
+                >
+                    <div className="school__card">
+                        <h2 className="school__card__header">{popupInfo.nombre}</h2>
+                        <div className="school__card__content">
+                            <p><strong>Dirección:</strong> {popupInfo.direc}</p>
+                            <p><strong>Cupos totales:</strong> {popupInfo.cuposTotales}</p>
+                            <p><strong>Cupos disponibles:</strong> {popupInfo.cuposDisponibles}</p>
+                            <p><a href="#">Ver más detalles</a></p>
+                        </div>
+                    </div>
+                    <img width="100%"/>
+                </Popup>
+            )}
             <NavigationControl position='bottom-right'/>
             <GeolocateControl
               position='top-left'

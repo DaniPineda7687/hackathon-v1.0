@@ -1,18 +1,17 @@
 import './styles/App.css';
-import ReactMapGL, { GeolocateControl, Marker, NavigationControl } from "react-map-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
-import Geocoder from './components/Geocoder';
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
-import LocationProvider, { LocationContext } from './LocationProvider';
-import { useContext } from 'react';
+import LocationProvider from './LocationProvider';
 import Map from './components/Map';
+import Header from './components/Header';
 function App() {
-  /*const [location, dispatch] = useContext(LocationContext);
- console.log(location)*/
   return (
     <div className="App">
       <LocationProvider>
-        <Map/>
+        <Header/>
+        <div className='map__container'>
+          <Map/>
+        </div>
       </LocationProvider>
     </div>
   );

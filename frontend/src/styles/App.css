@@ -1,5 +1,4 @@
-.App{
-    margin: 0 auto;
-    width: 80vw;
-    height: 90vh;
+.map__container {
+    width: 100vw;
+    height: calc(100vh - 15rem);
 }
