@@ -6,13 +6,17 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 import Geocoder from "./Geocoder";
 import { LocationContext } from "../LocationProvider";
 import { colegiosCerca } from "../services/colegiosCercanos";
+import Header from "./Header";
+import FormBusqueda from "./FormBusqueda";
 export default function Map(){
     const [popupInfo, setPopupInfo] = useState(null);
     const [coles,setColegiosCercanos]= useState([])
     const [location, dispatch] = useContext(LocationContext);
     useEffect(()=>{
       colegiosCerca([location.lat,location.lng],2).then(res=>setColegiosCercanos(res))
-    },[coles,location])
+      //dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng}})
+
+    },[coles])
     const pins = useMemo(
         () =>
           coles.map((item, index) => (
@@ -29,12 +33,15 @@ export default function Map(){
             >  
             </Marker>
           )),
-        [coles]
+        [location,coles]
       );
 /**
  * 
  */
     return(
+      <>
+      <Header/>
+      <FormBusqueda/>
         <div className="map__container">
         <ReactMapGL
           mapboxAccessToken='pk.eyJ1IjoiZGFuaXBpbmVkYTc2ODciLCJhIjoiY2xhdm1rd3IwMDczdTNzbXoyZXJhN29taCJ9.30hpkvZsDhbXyboZaVMtCw'
@@ -45,14 +52,15 @@ export default function Map(){
           }}
           mapStyle="mapbox://styles/mapbox/streets-v11"
         >
-            <Marker
-                latitude={location.lat}
-                longitude={location.lng}
-                draggable 
-                color="red"
-                scale={2}
-            >
-            </Marker>
+              <Marker
+                  latitude={location.lat}
+                  longitude={location.lng}
+                  draggable 
+                  onDrag={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng}})}} 
+                  color="red"
+                  scale={2}
+              >
+              </Marker>
             {pins}
             {popupInfo && (
                 <Popup
@@ -67,7 +75,6 @@ export default function Map(){
                             <p><strong>Dirección:</strong> {popupInfo.direc}</p>
                             <p><strong>Cupos totales:</strong> {popupInfo.cuposTotales}</p>
                             <p><strong>Cupos disponibles:</strong> {popupInfo.cuposDisponibles}</p>
-                            <p><a href="#">Ver más detalles</a></p>
                         </div>
                     </div>
                     <img width="100%"/>
@@ -77,6 +84,7 @@ export default function Map(){
             <GeolocateControl
               position='top-left'
               trackUserLocation
+              onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude}})}}
             />
             <Geocoder/>
         </ReactMapGL>
@@ -87,8 +95,15 @@ export default function Map(){
                     <div className="more__information__container">
                         <h2>{popupInfo.nombre}</h2> 
                         <table>
+                          <tr>
+                            <th>Cupos según cursos</th>
+                          </tr>
+                          {
+                            //Object.keys(popupInfo.jornada?.tarde.escolaridad?.primaria).map(posicion => console.log(popupInfo.jornada?.tarde.escolaridad?.primaria.posicion))
+                            //console.log(Object.keys(popupInfo.jornada?.tarde.escolaridad?.primaria))
+                          }
                             <tr>
-                                <th>Company</th>
+                                <th>{popupInfo.jornada.mañana.escolaridad.bachiller.sexto}</th>
                                 <th>Contact</th>
                                 <th>Country</th>
                             </tr>
@@ -109,5 +124,6 @@ export default function Map(){
             }
         </div>
         </div>
+        </>
     );
 }
