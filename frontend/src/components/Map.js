@@ -9,14 +9,15 @@ import { colegiosCerca } from "../services/colegiosCercanos";
 import Header from "./Header";
 import FormBusqueda from "./FormBusqueda";
 export default function Map(){
+  const [renderCount,setRenderCount]= useState(1);
     const [popupInfo, setPopupInfo] = useState(null);
     const [coles,setColegiosCercanos]= useState([])
     const [location, dispatch] = useContext(LocationContext);
     useEffect(()=>{
       colegiosCerca([location.lat,location.lng],2).then(res=>setColegiosCercanos(res))
       //dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng}})
-
-    },[coles])
+      console.log("recargandooo")
+    },[renderCount])
     const pins = useMemo(
         () =>
           coles.map((item, index) => (
@@ -56,7 +57,7 @@ export default function Map(){
                   latitude={location.lat}
                   longitude={location.lng}
                   draggable 
-                  onDrag={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng}})}} 
+                  onDrag={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng}}); setRenderCount(renderCount+1)}} 
                   color="red"
                   scale={2}
               >

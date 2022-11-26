@@ -220,3 +220,13 @@
 		right: 2%;
 	}
 }
+
+.main__container__home{
+	display: flex;
+	
+}
+.container{
+	width: 30vw;
+	margin-top:200px;
+	margin: 200px auto;
+}
