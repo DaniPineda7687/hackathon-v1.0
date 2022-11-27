@@ -33,13 +33,14 @@ export default function Map(){
     useEffect(()=>{
       console.log("segundo useeffect");
       console.log(location)
-      setColegiosCercanos(colegiosCerca(userPosition,2,totalidadColes))
       /*Condiciones*/
       if(location.conditions){
         let perimeter = location.conditions[0].perimeter;
         setColegiosCercanos(colegiosCerca(userPosition,perimeter,totalidadColes));
         
         console.log(location);
+      }else{
+        setColegiosCercanos(colegiosCerca(userPosition,2,totalidadColes))
       }
       console.log("despues del segundo")
     },[renderCount,location])
