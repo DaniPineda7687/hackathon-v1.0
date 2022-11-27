@@ -1,0 +1,823 @@
+[
+    {
+        "nombre": "FRANCISCO JOSE DE CALDAS",
+        "direc": "CR 26 35-68 CENTRO, Villavicencio, Meta",
+        "cuposTotales": 1000,
+        "cuposDisponibles": 1000,
+        "jornada":{
+          "mañana":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          },
+          "tarde":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          }
+        },
+        "geometry": [
+          4.149770405104225,
+          -73.6316692037746
+        ]
+      },{
+        "nombre": "COLEGIO ESPIRITU SANTO",
+        "direc": "Cl 26 C #41-71, Villavicencio, Meta",
+        "cuposTotales": 1000,
+        "cuposDisponibles": 1000,
+        "jornada":{
+          "mañana":{
+            "escolaridad":{
+              "primaria":{
+                "primero":15,
+                "segundo":30,
+                "tercero":20,
+                "cuarto":30,
+                "quinto":50
+              },
+              "bachiller":{
+                "sexto":10,
+                "septimo":4,
+                "octavo": 3,
+                "noveno":3,
+                "decimo":2,
+                "once":4
+              }
+            }
+          }
+        },
+        "geometry": [
+          4.139069790166171,
+          -73.6395093473533
+        ]
+      },{
+        "nombre": "Liceo Los Nogales",
+        "direc": "Cra. 46 #43-93, Villavicencio, Meta",
+        "cuposTotales": 1000,
+        "cuposDisponibles": 1000,
+        "jornada":{
+          "mañana":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":5,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":2,
+                "segundo":5,
+                "tercero":4,
+                "cuarto":3,
+                "quinto":7
+              },
+              "bachiller":{
+                "sexto":5,
+                "septimo":7,
+                "octavo": 83,
+                "noveno":9,
+                "decimo":0,
+                "once":8
+              }
+            }
+          },
+          "tarde":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":9,
+                "quinder":7
+              },
+              "bachiller":{
+                "sexto":5,
+                "septimo":5,
+                "octavo": 7,
+                "noveno":4,
+                "decimo":3,
+                "once":4
+              }
+            }
+          }
+        },
+        "geometry": [
+          4.1568888414394225,
+          -73.65092912334488
+        ]
+      },
+      {
+        "nombre": "Colegio La Salle",
+        "direc": "Cl. 39 #34-56, Villavicencio, Meta",
+        "cuposTotales": 1000,
+        "cuposDisponibles": 1000,
+        "jornada":{
+          "mañana":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          },
+          "noche":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          }
+        },
+        "geometry": [
+          4.159033179758515,
+          -73.64309119628413
+        ]
+      },{
+        "nombre": "Colegio Sagrado Corazón",
+        "direc": "Calle 35 No. 39-20 Barzal, Villavicencio, Meta",
+        "cuposTotales": 1000,
+        "cuposDisponibles": 1000,
+        "jornada":{
+          "mañana":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          },
+          "tarde":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          },
+          "noche":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          }
+        },
+        "geometry": [
+          4.145889208140906,
+          -73.6404825767801
+        ]
+      },{
+        "nombre": "Nuevo Gimnasio School",
+        "direc": "Cl. 15 #55-97, Villavicencio, Meta",
+        "cuposTotales": 1000,
+        "cuposDisponibles": 1000,
+        "jornada":{
+          "tarde":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":9,
+                "quinder":7
+              },
+              "primaria":{
+                "primero":6,
+                "segundo":5,
+                "tercero":7,
+                "cuarto":6,
+                "quinto":4
+              },
+              "bachiller":{
+                "sexto":5,
+                "septimo":5,
+                "octavo": 7,
+                "noveno":4,
+                "decimo":3,
+                "once":4
+              }
+            }
+          }
+        },
+        "geometry": [
+          4.134257601590568,
+          -73.65384570228512
+        ]
+      },{
+        "nombre": "Colegio Adventista De Villavicencio",
+        "direc": "Cl. 33a #38-38, Villavicencio, Meta",
+        "cuposTotales": 1000,
+        "cuposDisponibles": 1000,
+        "jornada":{
+          "mañana":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":5,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":15,
+                "segundo":30,
+                "tercero":20,
+                "cuarto":30,
+                "quinto":50
+              },
+              "bachiller":{
+                "sexto":10,
+                "septimo":4,
+                "octavo": 3,
+                "noveno":3,
+                "decimo":2,
+                "once":4
+              }
+            }
+          },
+          "tarde":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          }
+        },
+        "geometry": [
+          4.144143691224114,
+          -73.63897016302913
+        ]
+      },{
+        "nombre": "Colegio Peniel",
+        "direc": "Cl. 25c #21-30, Villavicencio, Meta",
+        "cuposTotales": 1000,
+        "cuposDisponibles": 1000,
+        "jornada":{
+          "mañana":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          },
+          "tarde":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          },
+          "noche":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          }
+        },
+        "geometry": [
+          4.142853667348263,
+          -73.6237345432681
+        ]
+      },{
+        "nombre": "Colegio don Bosco",
+        "direc": "Cl. 35 #4066, Villavicencio, Meta",
+        "cuposTotales": 1000,
+        "cuposDisponibles": 1000,
+        "jornada":{
+          "mañana":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          },
+          "tarde":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          },
+          "noche":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          }
+        },
+        "geometry": [
+          4.145412946805453,
+          -73.64167169161
+        ]
+      },{
+        "nombre": "Colegio Cristo Rey Villavicencio",
+        "direc": "Cra. 67 Nº 10-80 Sur, Villavicencio, Meta",
+        "cuposTotales": 1000,
+        "cuposDisponibles": 1000,
+        "jornada":{
+          "mañana":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":5,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":15,
+                "segundo":30,
+                "tercero":20,
+                "cuarto":30,
+                "quinto":50
+              },
+              "bachiller":{
+                "sexto":10,
+                "septimo":4,
+                "octavo": 3,
+                "noveno":3,
+                "decimo":2,
+                "once":4
+              }
+            }
+          },
+          "tarde":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          }
+        },
+        "geometry": [
+          4.1304805790711745,
+          -73.65605824543933
+        ]
+      },{
+        "nombre": "Colegio Departamental de La Esperanza (C.D.E)",
+        "direc": "Cra. 45 #No 13B - 25, Villavicencio, Meta",
+        "cuposTotales": 1000,
+        "cuposDisponibles": 1000,
+        "jornada":{
+          "mañana":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":5,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":2,
+                "segundo":5,
+                "tercero":4,
+                "cuarto":3,
+                "quinto":7
+              },
+              "bachiller":{
+                "sexto":5,
+                "septimo":7,
+                "octavo": 83,
+                "noveno":9,
+                "decimo":0,
+                "once":8
+              }
+            }
+          },
+          "tarde":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":9,
+                "quinder":7
+              },
+              "primaria":{
+                "primero":6,
+                "segundo":5,
+                "tercero":7,
+                "cuarto":6,
+                "quinto":4
+              },
+              "bachiller":{
+                "sexto":5,
+                "septimo":5,
+                "octavo": 7,
+                "noveno":4,
+                "decimo":3,
+                "once":4
+              }
+            }
+          }
+        },
+        "geometry": [
+          4.1314898361688,
+          -73.63461694904858
+        ]
+      },{
+        "nombre": "Colegio Cervantes Saavedra",
+        "direc": "Cl. 23 #34-24, Villavicencio, Meta",
+        "cuposTotales": 1000,
+        "cuposDisponibles": 1000,
+        "jornada":{
+          "mañana":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          },
+          "tarde":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          },
+          "noche":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          }
+        },
+        "geometry": [
+          4.137883023829261,
+          -73.63119709315067
+        ]
+      },{
+        "nombre": "Neil Armstrong School",
+        "direc": "Carrera 44 #14, Villavicencio, Meta",
+        "cuposTotales": 1000,
+        "cuposDisponibles": 1000,
+        "jornada":{
+          "mañana":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":5,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":2,
+                "segundo":5,
+                "tercero":4,
+                "cuarto":3,
+                "quinto":7
+              },
+              "bachiller":{
+                "sexto":5,
+                "septimo":7,
+                "octavo": 83,
+                "noveno":9,
+                "decimo":0,
+                "once":8
+              }
+            }
+          },
+          "tarde":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":9,
+                "quinder":7
+              },
+              "primaria":{
+                "primero":6,
+                "segundo":5,
+                "tercero":7,
+                "cuarto":6,
+                "quinto":4
+              },
+              "bachiller":{
+                "sexto":5,
+                "septimo":5,
+                "octavo": 7,
+                "noveno":4,
+                "decimo":3,
+                "once":4
+              }
+            }
+          }
+        },
+        "geometry": [
+          4.133103844958271,
+          -73.64442440707404
+        ]
+      },{
+        "nombre": "Colegio Juan José Rondón",
+        "direc": "Carrera 25 No.5-45, Alborada, Villavicencio, Meta",
+        "cuposTotales": 1000,
+        "cuposDisponibles": 1000,
+        "jornada":{
+          "tarde":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          },
+          "noche":{
+            "escolaridad":{
+              "preescolar":{
+                "prequinder":10,
+                "quinder":10
+              },
+              "primaria":{
+                "primero":20,
+                "segundo":30,
+                "tercero":30,
+                "cuarto":35,
+                "quinto":40
+              },
+              "bachiller":{
+                "sexto":40,
+                "septimo":40,
+                "octavo": 45,
+                "noveno":50,
+                "decimo":40,
+                "once":50
+              }
+            }
+          }
+        },
+        "geometry": [
+          4.124031381643784,
+          -73.62322034256259
+        ]
+      }
+]

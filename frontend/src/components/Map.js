@@ -15,7 +15,7 @@ const totalcoles = async()=>{
   const totalColegios = await resp.data;
   return totalColegios;
 }
-console.log("d")
+
 export default function Map(){
   const [renderCount,setRenderCount]= useState(1);
     const [popupInfo, setPopupInfo] = useState(null);
@@ -25,22 +25,22 @@ export default function Map(){
 
     const userPosition = [location.lat,location.lng];
 
+    //console.log(location)
     useEffect(()=>{
       totalcoles().then(res=>setTotalidadColes(res))
-      console.log(totalidadColes.length!==0 ? totalidadColes : "primer useeffect");
+     // console.log(totalidadColes.length!==0 ? totalidadColes : "primer useeffect");
     },[totalidadColes.length])
 
     useEffect(()=>{
-      console.log("segundo useeffect");
-      console.log(location)
+      //console.log("segundo useeffect");
+      //console.log(location)
       /*Condiciones*/
       if(location.conditions){
-        let perimeter = location.conditions[0].perimeter;
-        setColegiosCercanos(colegiosCerca(userPosition,perimeter,totalidadColes));
+        setColegiosCercanos(colegiosCerca(userPosition,{estatic:false,...location.conditions[0]},totalidadColes));
         
         console.log(location);
       }else{
-        setColegiosCercanos(colegiosCerca(userPosition,2,totalidadColes))
+        setColegiosCercanos(colegiosCerca(userPosition,{},totalidadColes))
       }
       console.log("despues del segundo")
     },[renderCount,location])

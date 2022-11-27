@@ -10,13 +10,6 @@
           "prequinder":10,
           "quinder":10
         },
-        "primaria":{
-          "primero":20,
-          "segundo":30,
-          "tercero":30,
-          "cuarto":35,
-          "quinto":40
-        },
         "bachiller":{
           "sexto":40,
           "septimo":40,
@@ -28,29 +21,6 @@
       }
     },
     "tarde":{
-      "escolaridad":{
-        "preescolar":{
-          "prequinder":10,
-          "quinder":10
-        },
-        "primaria":{
-          "primero":20,
-          "segundo":30,
-          "tercero":30,
-          "cuarto":35,
-          "quinto":40
-        },
-        "bachiller":{
-          "sexto":40,
-          "septimo":40,
-          "octavo": 45,
-          "noveno":50,
-          "decimo":40,
-          "once":50
-        }
-      }
-    },
-    "noche":{
       "escolaridad":{
         "preescolar":{
           "prequinder":10,
@@ -86,10 +56,6 @@
   "jornada":{
     "mañana":{
       "escolaridad":{
-        "preescolar":{
-          "prequinder":5,
-          "quinder":10
-        },
         "primaria":{
           "primero":15,
           "segundo":30,
@@ -104,29 +70,6 @@
           "noveno":3,
           "decimo":2,
           "once":4
-        }
-      }
-    },
-    "tarde":{
-      "escolaridad":{
-        "preescolar":{
-          "prequinder":10,
-          "quinder":10
-        },
-        "primaria":{
-          "primero":20,
-          "segundo":30,
-          "tercero":30,
-          "cuarto":35,
-          "quinto":40
-        },
-        "bachiller":{
-          "sexto":40,
-          "septimo":40,
-          "octavo": 45,
-          "noveno":50,
-          "decimo":40,
-          "once":50
         }
       }
     }
@@ -170,13 +113,6 @@
           "prequinder":9,
           "quinder":7
         },
-        "primaria":{
-          "primero":6,
-          "segundo":5,
-          "tercero":7,
-          "cuarto":6,
-          "quinto":4
-        },
         "bachiller":{
           "sexto":5,
           "septimo":5,
@@ -204,36 +140,6 @@
         "preescolar":{
           "prequinder":10,
           "quinder":10
-        },
-        "primaria":{
-          "primero":20,
-          "segundo":30,
-          "tercero":30,
-          "cuarto":35,
-          "quinto":40
-        },
-        "bachiller":{
-          "sexto":40,
-          "septimo":40,
-          "octavo": 45,
-          "noveno":50,
-          "decimo":40,
-          "once":50
-        }
-      }
-    },
-    "tarde":{
-      "escolaridad":{
-        "preescolar":{
-          "prequinder":10,
-          "quinder":10
-        },
-        "primaria":{
-          "primero":20,
-          "segundo":30,
-          "tercero":30,
-          "cuarto":35,
-          "quinto":40
         },
         "bachiller":{
           "sexto":40,
@@ -2124,13 +2030,6 @@
           "prequinder":6,
           "quinder":7
         },
-        "primaria":{
-          "primero":8,
-          "segundo":9,
-          "tercero":6,
-          "cuarto":5,
-          "quinto":4
-        },
         "bachiller":{
           "sexto":3,
           "septimo":5,
@@ -2364,13 +2263,6 @@
           "prequinder":10,
           "quinder":10
         },
-        "primaria":{
-          "primero":20,
-          "segundo":30,
-          "tercero":30,
-          "cuarto":35,
-          "quinto":40
-        },
         "bachiller":{
           "sexto":40,
           "septimo":40,
@@ -2443,13 +2335,6 @@
         "preescolar":{
           "prequinder":10,
           "quinder":10
-        },
-        "primaria":{
-          "primero":20,
-          "segundo":30,
-          "tercero":30,
-          "cuarto":35,
-          "quinto":40
         },
         "bachiller":{
           "sexto":40,
