@@ -32,7 +32,16 @@ export default function Map(){
 
     useEffect(()=>{
       console.log("segundo useeffect");
+      console.log(location)
       setColegiosCercanos(colegiosCerca(userPosition,2,totalidadColes))
+      /*Condiciones*/
+      if(location.conditions){
+        let perimeter = location.conditions[0].perimeter;
+        setColegiosCercanos(colegiosCerca(userPosition,perimeter,totalidadColes));
+        
+        console.log(location);
+      }
+      console.log("despues del segundo")
     },[renderCount,location])
     const pins = useMemo(
         () =>
@@ -73,7 +82,7 @@ export default function Map(){
                   latitude={location.lat}
                   longitude={location.lng}
                   draggable 
-                  onDrag={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng}}); setRenderCount(renderCount+1)}} 
+                  onDrag={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng, conditions:location.conditions}}); setRenderCount(renderCount+1)}} 
                   color="red"
                   scale={2}
               >
@@ -101,7 +110,7 @@ export default function Map(){
             <GeolocateControl
               position='top-left'
               trackUserLocation
-              onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude}}); setRenderCount(renderCount+1)}}
+              onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude,conditions:location.conditions}}); setRenderCount(renderCount+1)}}
             />
             <Geocoder/>
         </ReactMapGL>
