@@ -8,15 +8,31 @@ import { LocationContext } from "../LocationProvider";
 import { colegiosCerca } from "../services/colegiosCercanos";
 import Header from "./Header";
 import FormBusqueda from "./FormBusqueda";
+import axios from "axios";
+
+const totalcoles = async()=>{
+  const resp = await axios.get('http://localhost:5000/colegiosApi/colegios/colegiosTotales');
+  const totalColegios = await resp.data;
+  return totalColegios;
+}
+
 export default function Map(){
   const [renderCount,setRenderCount]= useState(1);
     const [popupInfo, setPopupInfo] = useState(null);
-    const [coles,setColegiosCercanos]= useState([])
+    const [coles,setColegiosCercanos]= useState([]);
     const [location, dispatch] = useContext(LocationContext);
+    const [totalidadColes,setTotalidadColes]=useState([])
+
+    const userPosition = [location.lat,location.lng];
+
     useEffect(()=>{
-      colegiosCerca([location.lat,location.lng],2).then(res=>setColegiosCercanos(res))
-      //dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng}})
-      console.log("recargandooo")
+      totalcoles().then(res=>setTotalidadColes(res))
+      console.log(totalidadColes.length!==0 ? totalidadColes : "primer useeffect");
+    },[totalidadColes.length])
+
+    useEffect(()=>{
+      console.log("segundo useeffect");
+      setColegiosCercanos(colegiosCerca(userPosition,2,totalidadColes))
     },[renderCount])
     const pins = useMemo(
         () =>
@@ -85,7 +101,7 @@ export default function Map(){
             <GeolocateControl
               position='top-left'
               trackUserLocation
-              onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude}})}}
+              onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude}}); setRenderCount(renderCount+1)}}
             />
             <Geocoder/>
         </ReactMapGL>
