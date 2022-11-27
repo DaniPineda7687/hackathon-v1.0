@@ -34,13 +34,15 @@ export default function Map(){
       console.log("segundo useeffect");
       console.log(location)
       /*Condiciones*/
+      let otherConditions;
       if(location.conditions){
         let perimeter = location.conditions[0].perimeter;
-        setColegiosCercanos(colegiosCerca(userPosition,perimeter,totalidadColes));
+        otherConditions = {educationLevel:location.conditions[0].level, schedule:location.conditions[0].schedule}
+        setColegiosCercanos(colegiosCerca(userPosition,perimeter,totalidadColes, otherConditions));
         
         console.log(location);
       }else{
-        setColegiosCercanos(colegiosCerca(userPosition,2,totalidadColes))
+        setColegiosCercanos(colegiosCerca(userPosition,2,totalidadColes,otherConditions))
       }
       console.log("despues del segundo")
     },[renderCount,location])
