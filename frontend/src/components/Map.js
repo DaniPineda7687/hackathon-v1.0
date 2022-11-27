@@ -15,7 +15,7 @@ const totalcoles = async()=>{
   const totalColegios = await resp.data;
   return totalColegios;
 }
-
+console.log("d")
 export default function Map(){
   const [renderCount,setRenderCount]= useState(1);
     const [popupInfo, setPopupInfo] = useState(null);
