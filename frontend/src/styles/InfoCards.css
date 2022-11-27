@@ -1,0 +1,90 @@
+.map__container{
+    padding: 0 4rem;
+}
+.school__card__header{
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: #000000;    
+}
+.school__card__content{
+    font-size: 1.4rem;
+    color: #000000; 
+}
+.school__card__content p a{
+    display: inline-block;
+    margin-top: 1.2rem;
+}
+.map__container {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 15rem);
+}
+
+.card__more__information{
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    width: 100vw;
+    height: 40vh;
+    background-color: #ffffff;
+    border-radius: 40px 40px 0 0;
+    overflow-y:scroll;
+    box-shadow: 0px -15px 9px -3px rgba(0,0,0,0.1);
+    transition: all .25s;
+    padding: 2.5rem 4rem;
+    color: #000000; 
+}
+.card__hidden{
+    bottom: -100%;
+}
+.card__visible{
+    bottom: 0;
+}
+
+.more__information__container h2{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+li{
+    list-style: none;
+}
+.title__table{
+    font-size: 1.8rem;
+}
+.horarios__container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 3rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.jornada__container li{
+    font-size: 1.2rem;
+}
+.title__jornada{
+    font-size: 1.6rem;
+}
+.title__level{
+    font-size: 1.4rem;
+}
+@media screen and (min-width:350px) {
+    .map__container{
+        height: calc(100vh - 10rem);
+    }
+}
+@media screen and (min-width:900px) {
+    .card__more__information{
+        border-radius: 0px 40px 40px 0px;
+        top: 0;
+        width: 30vw;
+        max-width: 500px;
+        height: calc(100vh - 0rem);
+        left: 0;
+    }
+    .card__hidden{
+        left: -100%;
+    }
+    .card__visible{
+        left: 0;
+    }
+}

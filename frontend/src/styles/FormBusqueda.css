@@ -1,0 +1,33 @@
+.conditions__user{
+    padding: 2rem;
+}
+.form__container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.form__container input,
+.form__container select{
+    padding: 1.2rem 2rem;
+    outline: none;
+    border: none;
+    border: 1px solid rgb(199, 199, 199);
+    border-radius: 40px;
+   
+}
+.form__container input,
+.form__container select,
+.form__container label,
+.form__container p{
+    font-size: 1.4rem;
+}
+.inputDistancia{
+    width: 520px;
+}
+.select__jornada p{
+    margin-bottom: 3px;
+}
+.select__jornada label{
+    padding-right: 16px;
+}
