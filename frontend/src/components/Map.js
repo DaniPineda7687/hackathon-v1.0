@@ -36,11 +36,11 @@ export default function Map(){
       //console.log(location)
       /*Condiciones*/
       if(location.conditions){
-        setColegiosCercanos(colegiosCerca(userPosition,{estatic:false,...location.conditions[0]},totalidadColes));
+        setColegiosCercanos(colegiosCerca(userPosition,totalidadColes,...location.conditions[0]));
         
         console.log(location);
       }else{
-        setColegiosCercanos(colegiosCerca(userPosition,{},totalidadColes))
+        setColegiosCercanos(colegiosCerca(userPosition,totalidadColes))
       }
       console.log("despues del segundo")
     },[renderCount,location])
