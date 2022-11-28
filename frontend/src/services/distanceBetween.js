@@ -13,6 +13,6 @@ export const distanceBetween = (firstPoint,secondPoint) => {
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
     const d = R * c; // in metres
-
+    console.log(d)
     return d;
 }

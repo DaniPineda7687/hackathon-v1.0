@@ -1,24 +1,14 @@
 import { distanceBetween } from "./distanceBetween";
-function verificarJornada(colegio,jornadasUsuario){
+function verificarCondicionesUsuario(colegio,jornadasUsuario,level){
   let jornadasColegio = Object.keys(colegio.jornada);
   let marcador = false;
   jornadasUsuario.forEach(jornadaU =>{
-    if(jornadasColegio.includes(jornadaU)){
-      console.log("uno uno")
+    if(jornadasColegio.includes(jornadaU) && colegio.jornada[jornadaU].escolaridad?.[level]){
       marcador=true;
     }
   })
   return marcador ? marcador : false;
 }
-
-/*function verificarNivelEducativo(colegio,nivelUsuario,jornadasUsuario){
-  console.log(jornadasUsuario)
-  jornadasUsuario.forEach(jornadasU=>{
-    console.log(jornadasU)
-    let levels = Object.keys(colegio.jornada)
-    console.log(levels)
-  })
-}*/
 export const colegiosCerca = (userPosition,km,coles,otherConditions) => {
   //No hay condiciones del usuario
   if(!otherConditions){
@@ -31,15 +21,11 @@ export const colegiosCerca = (userPosition,km,coles,otherConditions) => {
   }else{
   //Hay condiciones (nivel y horario)
   let level = otherConditions.educationLevel;
-  console.log(otherConditions)
   let schedule = otherConditions.schedule;
     if(coles.length!==0){
       const colesCerca = coles.map(col => (distanceBetween(userPosition,col.geometry)<=(km*1000)-500) ? col : undefined ).filter(cole=>{
         if(cole!==undefined){
-          console.log(cole);
-          console.log(schedule);
-          if(verificarJornada(cole,schedule)){
-            //verificarNivelEducativo(cole,level,schedule)
+          if(verificarCondicionesUsuario(cole,schedule,level)){
             return cole;
           }
         }

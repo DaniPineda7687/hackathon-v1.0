@@ -1,4 +1,4 @@
-import ReactMapGL, { GeolocateControl, Marker, NavigationControl, Popup } from "react-map-gl"
+import ReactMapGL, { GeolocateControl, Layer, Marker, NavigationControl, Popup, Source } from "react-map-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
 import "../styles/InfoCards.css"
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
@@ -49,7 +49,6 @@ export default function Map(){
     const pins = useMemo(
         () =>
           coles.map((item, index) => (
-            
             <Marker
               key={`marker-${index}`}
               longitude={item.geometry[1]}
@@ -80,6 +79,7 @@ export default function Map(){
             zoom:13,
           }}
           mapStyle="mapbox://styles/mapbox/streets-v11"
+          
         >
               <Marker
                   latitude={location.lat}
@@ -110,12 +110,13 @@ export default function Map(){
                 </Popup>
             )}
             <NavigationControl position='bottom-right'/>
+            
             <GeolocateControl
               position='top-left'
               trackUserLocation
               onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude,conditions:location.conditions}}); setRenderCount(renderCount+1)}}
             />
-            <Geocoder/>
+            <Geocoder/>  
         </ReactMapGL>
         <div className={`card__more__information ${popupInfo==null ? "card__hidden" : "card__visible"}` }>
             {
