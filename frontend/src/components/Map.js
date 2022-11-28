@@ -17,7 +17,6 @@ const totalcoles = async()=>{
 }
 
 export default function Map(){
-  const [renderCount,setRenderCount]= useState(1);
     const [popupInfo, setPopupInfo] = useState(null);
     const [coles,setColegiosCercanos]= useState([]);
     const [location, dispatch] = useContext(LocationContext);
@@ -36,14 +35,14 @@ export default function Map(){
       //console.log(location)
       /*Condiciones*/
       if(location.conditions){
-        setColegiosCercanos(colegiosCerca(userPosition,totalidadColes,...location.conditions[0]));
+        setColegiosCercanos(colegiosCerca(userPosition,totalidadColes,location.conditions[0]));
         
         console.log(location);
       }else{
         setColegiosCercanos(colegiosCerca(userPosition,totalidadColes))
       }
       console.log("despues del segundo")
-    },[renderCount,location])
+    },[location])
     const pins = useMemo(
         () =>
           coles.map((item, index) => (
@@ -83,7 +82,7 @@ export default function Map(){
                   latitude={location.lat}
                   longitude={location.lng}
                   draggable 
-                  onDrag={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng, conditions:location.conditions}}); setRenderCount(renderCount+1)}} 
+                  onDrag={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng, conditions:location.conditions}})}} 
                   color="red"
                   scale={2}
               >
@@ -111,7 +110,7 @@ export default function Map(){
             <GeolocateControl
               position='top-left'
               trackUserLocation
-              onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude,conditions:location.conditions}}); setRenderCount(renderCount+1)}}
+              onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude,conditions:location.conditions}})}}
             />
             <Geocoder/>
         </ReactMapGL>
