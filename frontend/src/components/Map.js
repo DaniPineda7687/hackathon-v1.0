@@ -2,7 +2,7 @@ import ReactMapGL, { GeolocateControl, Marker, NavigationControl, Popup } from "
 import "mapbox-gl/dist/mapbox-gl.css"
 import "../styles/InfoCards.css"
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import Geocoder from "./Geocoder";
 import { LocationContext } from "../LocationProvider";
 import { colegiosCerca } from "../services/colegiosCercanos";
@@ -17,6 +17,7 @@ const totalcoles = async()=>{
 }
 
 export default function Map(){
+    const [countReft,setCountRef]= useState(1)
     const [popupInfo, setPopupInfo] = useState(null);
     const [coles,setColegiosCercanos]= useState([]);
     const [location, dispatch] = useContext(LocationContext);
@@ -24,7 +25,7 @@ export default function Map(){
 
     const userPosition = [location.lat,location.lng];
 
-    //console.log(location)
+    console.log(location)
     useEffect(()=>{
       totalcoles().then(res=>setTotalidadColes(res))
      // console.log(totalidadColes.length!==0 ? totalidadColes : "primer useeffect");
@@ -110,7 +111,17 @@ export default function Map(){
             <GeolocateControl
               position='top-left'
               trackUserLocation
-              onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude,conditions:location.conditions}})}}
+              ref={useCallback((ref)=>{
+                console.log(ref)
+                if(location.conditions){
+                  console.log(countReft);
+                  if(ref && countReft===1){
+                    setCountRef(2);
+                    ref.trigger();
+                  }
+                }
+              })}
+              onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude,conditions:location.conditions}}); console.log(e)}}
             />
             <Geocoder/>
         </ReactMapGL>
