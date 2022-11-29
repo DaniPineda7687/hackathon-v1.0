@@ -10,6 +10,7 @@ import Header from "./Header";
 import FormBusqueda from "./FormBusqueda";
 import axios from "axios";
 import route from "../geoJson";
+import { getOptimalRoute } from "../services/getOptimalRoute";
 
 const totalcoles = async()=>{
   const resp = await axios.get('http://localhost:5000/colegiosApi/colegios/colegiosTotales');
@@ -23,15 +24,18 @@ export default function Map(){
     const [coles,setColegiosCercanos]= useState([]);
     const [location, dispatch] = useContext(LocationContext);
     const [totalidadColes,setTotalidadColes]=useState([])
-
+    const [route,setRoute]= useState({})
     const userPosition = [location.lat,location.lng];
+    const [schoolPosition,setSchoolPosition] = useState([])
 
     console.log(location)
     useEffect(()=>{
-      totalcoles().then(res=>setTotalidadColes(res))
+      totalcoles().then(res=>setTotalidadColes(res));
      },[totalidadColes.length])
 
     useEffect(()=>{
+      if(schoolPosition.length>0){getOptimalRoute({userPosition:userPosition,schoolPosition:schoolPosition})
+      .then(res=>setRoute(res))}
       if(location.conditions){
         setColegiosCercanos(colegiosCerca(userPosition,totalidadColes,location.conditions[0]));
         
@@ -40,7 +44,7 @@ export default function Map(){
         setColegiosCercanos(colegiosCerca(userPosition,totalidadColes))
       }
       console.log("despues del segundo")
-    },[location])
+    },[location,schoolPosition])
     const pins = useMemo(
       () =>
         coles.map((item, index) => (
@@ -53,6 +57,7 @@ export default function Map(){
             onClick={e => {
               e.originalEvent.stopPropagation();
               setPopupInfo(item);
+              setSchoolPosition([item.geometry[0],item.geometry[1]]);
             }}
           >  
           </Marker>
@@ -119,8 +124,10 @@ export default function Map(){
             })}
             onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude,conditions:location.conditions}}); console.log(e)}}
           />
-          <Geocoder/>  
-            <Source id='polylineLayer' type='geojson' data={route.routes[0].geometry}>
+          <Geocoder/> 
+          {
+            userPosition ? 
+            <Source id='polylineLayer' type='geojson' data={route}>
               <Layer
                 id='lineLayer'
                 type='line'
@@ -134,7 +141,8 @@ export default function Map(){
                   'line-width': 5,
                 }}
               />
-            </Source>
+            </Source> : null
+          }
         </ReactMapGL>
         <div className={`card__more__information ${popupInfo==null ? "card__hidden" : "card__visible"}` }>
             {
