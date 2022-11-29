@@ -2,7 +2,7 @@ import ReactMapGL, { GeolocateControl, Layer, Marker, NavigationControl, Popup, 
 import "mapbox-gl/dist/mapbox-gl.css"
 import "../styles/InfoCards.css"
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext,useCallback, useEffect, useMemo, useState } from 'react';
 import Geocoder from "./Geocoder";
 import { LocationContext } from "../LocationProvider";
 import { colegiosCerca } from "../services/colegiosCercanos";
@@ -18,7 +18,7 @@ const totalcoles = async()=>{
 }
 console.log("d")
 export default function Map(){
-  const [renderCount,setRenderCount]= useState(1);
+  const [countReft,setCountRef]= useState(1)
     const [popupInfo, setPopupInfo] = useState(null);
     const [coles,setColegiosCercanos]= useState([]);
     const [location, dispatch] = useContext(LocationContext);
@@ -26,98 +26,100 @@ export default function Map(){
 
     const userPosition = [location.lat,location.lng];
 
+    console.log(location)
     useEffect(()=>{
       totalcoles().then(res=>setTotalidadColes(res))
-      console.log(totalidadColes.length!==0 ? totalidadColes : "primer useeffect");
-    },[totalidadColes.length])
+     },[totalidadColes.length])
 
     useEffect(()=>{
-      console.log("segundo useeffect");
-      console.log(location)
-      /*Condiciones*/
-      let otherConditions;
       if(location.conditions){
-        let perimeter = location.conditions[0].perimeter;
-        otherConditions = {educationLevel:location.conditions[0].level, schedule:location.conditions[0].schedule}
-        setColegiosCercanos(colegiosCerca(userPosition,perimeter,totalidadColes, otherConditions));
+        setColegiosCercanos(colegiosCerca(userPosition,totalidadColes,location.conditions[0]));
         
         console.log(location);
       }else{
-        setColegiosCercanos(colegiosCerca(userPosition,2,totalidadColes,otherConditions))
+        setColegiosCercanos(colegiosCerca(userPosition,totalidadColes))
       }
       console.log("despues del segundo")
-    },[renderCount,location])
+    },[location])
     const pins = useMemo(
-        () =>
-          coles.map((item, index) => (
-            <Marker
-              key={`marker-${index}`}
-              longitude={item.geometry[1]}
-              latitude={item.geometry[0]}
-              anchor="bottom"
-              onClick={e => {
-                e.originalEvent.stopPropagation();
-                setPopupInfo(item);
-              }}
-            >  
-            </Marker>
-          )),
-        [location,coles]
-      );
-/**
- * 
- */
-    return(
-      <>
-      <Header/>
-      <FormBusqueda/>
-        <div className="map__container">
-        <ReactMapGL
-          mapboxAccessToken='pk.eyJ1IjoiZGFuaXBpbmVkYTc2ODciLCJhIjoiY2xhdm1rd3IwMDczdTNzbXoyZXJhN29taCJ9.30hpkvZsDhbXyboZaVMtCw'
-          initialViewState={{
-            longitude:-73.6301814,
-            latitude:4.152885,
-            zoom:13,
-          }}
-          mapStyle="mapbox://styles/mapbox/streets-v11"
+      () =>
+        coles.map((item, index) => (
           
-        >
-              <Marker
-                  latitude={location.lat}
-                  longitude={location.lng}
-                  draggable 
-                  onDrag={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng, conditions:location.conditions}}); setRenderCount(renderCount+1)}} 
-                  color="red"
-                  scale={2}
+          <Marker
+            key={`marker-${index}`}
+            longitude={item.geometry[1]}
+            latitude={item.geometry[0]}
+            anchor="bottom"
+            onClick={e => {
+              e.originalEvent.stopPropagation();
+              setPopupInfo(item);
+            }}
+          >  
+          </Marker>
+        )),
+      [location,coles]
+    );
+/**
+* 
+*/
+  return(
+    <>
+    <Header/>
+    <FormBusqueda/>
+      <div className="map__container">
+      <ReactMapGL
+        mapboxAccessToken='pk.eyJ1IjoiZGFuaXBpbmVkYTc2ODciLCJhIjoiY2xhdm1rd3IwMDczdTNzbXoyZXJhN29taCJ9.30hpkvZsDhbXyboZaVMtCw'
+        initialViewState={{
+          longitude:-73.6301814,
+          latitude:4.152885,
+          zoom:13,
+        }}
+        mapStyle="mapbox://styles/mapbox/streets-v11"
+      >
+            <Marker
+                latitude={location.lat}
+                longitude={location.lng}
+                draggable 
+                onDrag={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng, conditions:location.conditions}})}} 
+                color="red"
+                scale={2}
+            >
+            </Marker>
+          {pins}
+          {popupInfo && (
+              <Popup
+                  anchor="top"
+                  longitude={popupInfo.geometry[1]}
+                  latitude={popupInfo.geometry[0]}
+                  onClose={() => setPopupInfo(null)}
               >
-              </Marker>
-            {pins}
-            {popupInfo && (
-                <Popup
-                    anchor="top"
-                    longitude={popupInfo.geometry[1]}
-                    latitude={popupInfo.geometry[0]}
-                    onClose={() => setPopupInfo(null)}
-                >
-                    <div className="school__card">
-                        <h2 className="school__card__header">{popupInfo.nombre}</h2>
-                        <div className="school__card__content">
-                            <p><strong>Dirección:</strong> {popupInfo.direc}</p>
-                            <p><strong>Cupos totales:</strong> {popupInfo.cuposTotales}</p>
-                            <p><strong>Cupos disponibles:</strong> {popupInfo.cuposDisponibles}</p>
-                        </div>
-                    </div>
-                    <img width="100%"/>
-                </Popup>
-            )}
-            <NavigationControl position='bottom-right'/>
-            
-            <GeolocateControl
-              position='top-left'
-              trackUserLocation
-              onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude,conditions:location.conditions}}); setRenderCount(renderCount+1)}}
-            />
-            <Geocoder/>  
+                  <div className="school__card">
+                      <h2 className="school__card__header">{popupInfo.nombre}</h2>
+                      <div className="school__card__content">
+                          <p><strong>Dirección:</strong> {popupInfo.direc}</p>
+                          <p><strong>Cupos totales:</strong> {popupInfo.cuposTotales}</p>
+                          <p><strong>Cupos disponibles:</strong> {popupInfo.cuposDisponibles}</p>
+                      </div>
+                  </div>
+                  <img width="100%"/>
+              </Popup>
+          )}
+          <NavigationControl position='bottom-right'/>
+          <GeolocateControl
+            position='top-left'
+            trackUserLocation
+            ref={useCallback((ref)=>{
+              console.log(ref)
+              if(location.conditions){
+                if(ref && countReft===1){
+                  setCountRef(2);
+                  ref.trigger();
+                }
+              }
+            })}
+            onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude,conditions:location.conditions}}); console.log(e)}}
+          />
+          <Geocoder/>  
             <Source id='polylineLayer' type='geojson' data={route.routes[0].geometry}>
               <Layer
                 id='lineLayer'
