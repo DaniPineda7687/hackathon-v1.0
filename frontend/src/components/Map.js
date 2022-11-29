@@ -9,6 +9,7 @@ import { colegiosCerca } from "../services/colegiosCercanos";
 import Header from "./Header";
 import FormBusqueda from "./FormBusqueda";
 import axios from "axios";
+import route from "../geoJson";
 
 const totalcoles = async()=>{
   const resp = await axios.get('http://localhost:5000/colegiosApi/colegios/colegiosTotales');
@@ -117,6 +118,21 @@ export default function Map(){
               onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude,conditions:location.conditions}}); setRenderCount(renderCount+1)}}
             />
             <Geocoder/>  
+            <Source id='polylineLayer' type='geojson' data={route.routes[0].geometry}>
+              <Layer
+                id='lineLayer'
+                type='line'
+                source='my-data'
+                layout={{
+                'line-join': 'round',
+                'line-cap': 'round',
+                }}
+                paint={{
+                'line-color': 'rgba(3, 170, 238, 0.5)',
+                  'line-width': 5,
+                }}
+              />
+            </Source>
         </ReactMapGL>
         <div className={`card__more__information ${popupInfo==null ? "card__hidden" : "card__visible"}` }>
             {
