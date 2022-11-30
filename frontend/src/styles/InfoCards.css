@@ -28,7 +28,6 @@
     height: 40vh;
     background-color: #ffffff;
     border-radius: 40px 40px 0 0;
-    overflow-y:scroll;
     box-shadow: 0px -15px 9px -3px rgba(0,0,0,0.1);
     transition: all .25s;
     padding: 2.5rem 4rem;
@@ -74,7 +73,7 @@ li{
 }
 @media screen and (min-width:900px) {
     .card__more__information{
-        border-radius: 0px 40px 40px 0px;
+        border-radius: 0;
         top: 0;
         width: 30vw;
         max-width: 500px;
@@ -87,4 +86,43 @@ li{
     .card__visible{
         left: 0;
     }
+}
+.methodsToArrive__container{
+    margin-top: 3rem;
+}
+.methodButton{
+    width: 40px;
+    height: 40px;
+    outline: none;
+    border: none;
+    padding: 1rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.methodButton__active{
+    color: #1360e2;
+    background-color: #a2d6f9;
+}
+.methods__container{
+    display: flex;
+    gap: 2rem;
+}
+
+.routeDetails{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    margin-top: 1rem;
+    column-gap: 2rem;
+}
+.routeDetails__icon{
+    font-size: 2rem;
+}
+.details__description{
+    font-size: 1.6rem;
+}
+.details__description span{
+    font-weight: bold;
+    color: #55a630;
 }
