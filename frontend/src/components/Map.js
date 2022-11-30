@@ -72,6 +72,7 @@ export default function Map(){
               }
             }}
           >  
+          <img src="/resources/icons/colegio.png" width={40}/>
           </Marker>
         )),
       [location,coles]
