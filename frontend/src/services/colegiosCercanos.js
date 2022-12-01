@@ -1,7 +1,6 @@
 import { distanceBetween } from "./distanceBetween";
 
 export const colegiosCerca = (userPosition,coles,{perimeter=2,level="todos",schedule=["mañana","tarde","noche"],}={}) => {
-  console.log(perimeter,level,schedule);
   //revisa si el array de colegios esta vacio
   if(coles.length!==0){
     //Revisa si el filtro viene vacio (cuando esta en todos por default es porque no llego nada)

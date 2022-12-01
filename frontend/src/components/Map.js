@@ -9,11 +9,11 @@ import { colegiosCerca } from "../services/colegiosCercanos";
 import Header from "./Header";
 import FormBusqueda from "./FormBusqueda";
 import axios from "axios";
-import route from "../geoJson";
 import { getOptimalRoute } from "../services/getOptimalRoute";
 import { AiFillCar } from "react-icons/ai";
 import { BiWalk } from "react-icons/bi";
 import textFormatter from "../services/utils";
+import SchoolInfo from "./SchoolInformation";
 
 
 const totalcoles = async()=>{
@@ -21,7 +21,6 @@ const totalcoles = async()=>{
   const totalColegios = await resp.data;
   return totalColegios;
 }
-console.log("d")
 export default function Map(){
   const [countReft,setCountRef]= useState(1)
     const [popupInfo, setPopupInfo] = useState(null);
@@ -34,13 +33,13 @@ export default function Map(){
     const [schoolSelect,setSchoolSelect] = useState([])
     const[methodButton, setMethodButton]=useState(false)
     const[methodSelect, setMethodSelect]=useState("")
-    console.log(location)
+    const [mapRef,setMapRef] = useState({})
     useEffect(()=>{
       totalcoles().then(res=>setTotalidadColes(res));
      },[totalidadColes.length])
 
     useEffect(()=>{
-      if(schoolPosition.length>0 && methodSelect!=""){getOptimalRoute({userPosition:userPosition,schoolPosition:schoolPosition,method:methodSelect})
+      if(schoolPosition.length>0 && methodSelect!==""){getOptimalRoute({userPosition:userPosition,schoolPosition:schoolPosition,method:methodSelect})
       .then(res=>setRoute(res))}
       if(location.conditions){
         setColegiosCercanos(colegiosCerca(userPosition,totalidadColes,location.conditions[0]));
@@ -48,7 +47,6 @@ export default function Map(){
       }else{
         setColegiosCercanos(colegiosCerca(userPosition,totalidadColes))
       }
-      console.log("despues del segundo")
     },[location,schoolPosition])
     const pins = useMemo(
       () =>
@@ -59,13 +57,15 @@ export default function Map(){
             longitude={item.geometry[1]}
             latitude={item.geometry[0]}
             anchor="bottom"
+            
             onClick={e => {
               e.originalEvent.stopPropagation();
               setPopupInfo(item);
               setSchoolSelect([item.geometry[0],item.geometry[1]])
-              if(item.geometry[0]!=schoolPosition[0]){
+              if(item.geometry[0]!==schoolPosition[0]){
                 setMethodButton(false);
-                setMethodSelect("")
+                setMethodSelect("");
+                mapRef.flyTo({center:[item.geometry[1],item.geometry[0]],duration:1000,essential:true})
               }else{
                 setMethodButton(true);
                 setMethodSelect(methodSelect)
@@ -87,12 +87,15 @@ export default function Map(){
       <div className="map__container">
       <ReactMapGL
         mapboxAccessToken='pk.eyJ1IjoiZGFuaXBpbmVkYTc2ODciLCJhIjoiY2xhdm1rd3IwMDczdTNzbXoyZXJhN29taCJ9.30hpkvZsDhbXyboZaVMtCw'
-        initialViewState={{
+        initialViewState={
+          {
           longitude:-73.6301814,
           latitude:4.152885,
           zoom:13,
-        }}
+          }
+        }
         mapStyle="mapbox://styles/mapbox/streets-v11"
+        ref={(ref)=>ref && setMapRef(ref.getMap())}
       >
             <Marker
                 latitude={location.lat}
@@ -127,7 +130,6 @@ export default function Map(){
             position='bottom-right'
             trackUserLocation
             ref={useCallback((ref)=>{
-              console.log(ref)
               if(location.conditions){
                 if(ref && countReft===1){
                   setCountRef(2);
@@ -135,7 +137,7 @@ export default function Map(){
                 }
               }
             })}
-            onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude,conditions:location.conditions}}); console.log(e)}}
+            onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude,conditions:location.conditions}})}}
           />
           <Geocoder/> 
           {
@@ -162,47 +164,15 @@ export default function Map(){
                 popupInfo 
                 ? 
                     <div className="more__information__container">
-                        <h2>{textFormatter(textFormatter(popupInfo.nombre))}</h2> 
-                        <table>
-                          <tr>
-                            <th className="title__table">CUPOS DISPONIBLES SEGÚN JORNADA</th>
-                          </tr>
-                          <div className="horarios__container">
-
-                          {
-                            Object.keys(popupInfo.jornada).map(valor=>{
-                              return(
-                                <div className="jornada__container">
-                                <tr><h3 className="title__jornada">{textFormatter(`${valor}`)}</h3></tr>
-                                {Object.keys(popupInfo.jornada[valor].escolaridad).map(educacion=>{
-                                  return(
-                                    <>
-                                      <tr><h4 className="title__level">{textFormatter(educacion)}</h4></tr>
-                                      <ul>
-                                        {Object.keys(popupInfo.jornada[valor].escolaridad[educacion]).map(grado=>{
-                                          return(
-                                            <li>{textFormatter(`${grado}: ${popupInfo.jornada[valor].escolaridad[educacion][grado]}`)}</li>
-                                          )
-                                        })}
-                                      </ul>
-                                    </>
-                                  )
-                                })}
-                                </div>
-                              )
-                            })
-                          }
-                          </div>
-                        </table>
+                        <SchoolInfo popupInfo={popupInfo}/>
                         <div className="methodsToArrive__container">
                           <h2>¿Cómo llegar?</h2>
                           <div className="methods__container">
                             <div className="drivingMethod__container">
-                              <button title="En coche" className={`methodButton ${methodSelect=="driving" ? "methodButton__active":""}`} onClick={()=>{
+                              <button title="En coche" className={`methodButton ${methodSelect==="driving" ? "methodButton__active":""}`} onClick={()=>{
                                 setSchoolPosition([schoolSelect[0],schoolSelect[1]])
                                 setMethodButton(!methodButton)
                                 setMethodSelect("driving")
-                                console.log(route)
                                 }}>
                                 <AiFillCar />
                               </button>
