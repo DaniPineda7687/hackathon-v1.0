@@ -14,6 +14,7 @@ import { getOptimalRoute } from "../services/getOptimalRoute";
 import { AiFillCar } from "react-icons/ai";
 import { BiWalk } from "react-icons/bi";
 import {textFormatter,findSchool} from "../services/utils"
+import SchoolInfo from "./SchoolInformation";
 
 
 const totalcoles = async()=>{
@@ -34,6 +35,7 @@ export default function Map(){
     const [schoolSelect,setSchoolSelect] = useState([])
     const[methodButton, setMethodButton]=useState(false)
     const[methodSelect, setMethodSelect]=useState("")
+    const [mapRef,setMapRef] = useState({})
     console.log(coles)
     console.log(schoolPosition);
     useEffect(()=>{
@@ -67,7 +69,8 @@ export default function Map(){
               setSchoolSelect([item.geometry[0],item.geometry[1]])
               if(item.geometry[0]!=schoolPosition[0]){
                 setMethodButton(false);
-                setMethodSelect("")
+                setMethodSelect("");
+                mapRef.flyTo({center:[item.geometry[1],item.geometry[0]],duration:1000,essential:true})
               }else{
                 setMethodButton(true);
                 setMethodSelect(methodSelect)
@@ -95,6 +98,7 @@ export default function Map(){
           zoom:13,
         }}
         mapStyle="mapbox://styles/mapbox/streets-v11"
+        ref={(ref)=>ref && setMapRef(ref.getMap())}
       >
             <Marker
                 latitude={location.lat}
@@ -170,38 +174,7 @@ export default function Map(){
                 popupInfo 
                 ? 
                     <div className="more__information__container">
-                        <h2>{textFormatter(textFormatter(popupInfo.nombre))}</h2> 
-                        <table>
-                          <tr>
-                            <th className="title__table">CUPOS DISPONIBLES SEGÚN JORNADA</th>
-                          </tr>
-                          <div className="horarios__container">
-
-                          {
-                            Object.keys(popupInfo.jornada).map(valor=>{
-                              return(
-                                <div className="jornada__container">
-                                <tr><h3 className="title__jornada">{textFormatter(`${valor}`)}</h3></tr>
-                                {Object.keys(popupInfo.jornada[valor].escolaridad).map(educacion=>{
-                                  return(
-                                    <>
-                                      <tr><h4 className="title__level">{textFormatter(educacion)}</h4></tr>
-                                      <ul>
-                                        {Object.keys(popupInfo.jornada[valor].escolaridad[educacion]).map(grado=>{
-                                          return(
-                                            <li>{textFormatter(`${grado}: ${popupInfo.jornada[valor].escolaridad[educacion][grado]}`)}</li>
-                                          )
-                                        })}
-                                      </ul>
-                                    </>
-                                  )
-                                })}
-                                </div>
-                              )
-                            })
-                          }
-                          </div>
-                        </table>
+                        <SchoolInfo popupInfo={popupInfo}/>
                         <div className="methodsToArrive__container">
                           <h2>¿Cómo llegar?</h2>
                           <div className="methods__container">
