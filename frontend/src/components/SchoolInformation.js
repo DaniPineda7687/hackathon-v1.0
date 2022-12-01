@@ -16,9 +16,12 @@ const SchoolInfo = ({popupInfo})=>{
             {
             location.conditions[0].schedule.map(horario=>{
                 if(popupInfo.jornada[horario]){
-                    return <><br/><h4>{horario}</h4>{
-                        Object.keys(popupInfo.jornada[horario].escolaridad[location.conditions[0].level]).filter(pos=>pos!==undefined).map(curso=><li>{`${curso}: ${popupInfo.jornada[horario].escolaridad[location.conditions[0].level][curso]}`}</li>)
-                    }</>
+                    return popupInfo.jornada[horario].escolaridad[location.conditions[0].level]? 
+                    <>
+                    <br/><h4>{horario}</h4>
+                        {Object.keys(popupInfo.jornada[horario].escolaridad[location.conditions[0].level]).filter(pos=>pos!==undefined).map(curso=><li>{`${curso}: ${popupInfo.jornada[horario].escolaridad[location.conditions[0].level][curso]}`}</li>)}
+                    </>
+                    : null
                 }
             })}
         </ul>
