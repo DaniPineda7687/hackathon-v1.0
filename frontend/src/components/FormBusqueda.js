@@ -65,7 +65,9 @@ export default function FormBusqueda(){
     return(
         <div className="conditions__user">
             <form className="form__container" onSubmit={(e)=>handleSubmit(e)}>
-                <input required placeholder="¿En cuantos kilometros (kms) a la redonda desea realizar la busqueda" type="number" className="inputDistancia" onChange={(e)=>setDistance(Number(e.target.value))}/>
+                <div className="form">
+                    <input required placeholder="¿En cuantos kilometros (kms) a la redonda desea realizar la busqueda" type="number" className="inputDistancia" onChange={(e)=>setDistance(Number(e.target.value))}/> <span className="input-border"></span>
+                </div>
                 <select required onChange={(e)=>setLevel(e.target.value)}>
                     <option selected disabled value="noNivel">Nivel educativo</option>
                     <option value="preescolar">Transición - Preescolar</option>
@@ -74,11 +76,14 @@ export default function FormBusqueda(){
                 </select>
                 <div className="select__jornada">
                     <p>Jornada estudiantil</p>
-                    <label><input type="checkbox" value="mañana" id="schedule-option"/> Mañana</label>
-                    <label><input type="checkbox" value="tarde" id="schedule-option"/> Tarde</label>
-                    <label><input type="checkbox" value="noche" id="schedule-option"/> Noche</label>
+                    <div id="checkbox">
+                        <label className="containerCheck"><input type="checkbox" value="mañana" id="schedule-option"/><div className="checkmark"></div>Mañana</label>
+                        <label className="containerCheck"><input type="checkbox" value="tarde" id="schedule-option"/><div className="checkmark"></div>Tarde</label>
+                        <label className="containerCheck"><input type="checkbox" value="noche" id="schedule-option"/><div className="checkmark"></div>Noche</label>
+                    </div>
+                    
                 </div>
-                <input type="submit"/>
+                <button id="send" type="submit">Enviar consulta</button>
             </form>
             <ToastContainer />
         </div>

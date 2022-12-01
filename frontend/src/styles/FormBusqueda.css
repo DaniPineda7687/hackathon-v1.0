@@ -1,33 +1,171 @@
-.conditions__user{
+.conditions__user {
     padding: 2rem;
 }
-.form__container{
+
+.form__container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
+
 .form__container input,
-.form__container select{
+.form__container select {
     padding: 1.2rem 2rem;
     outline: none;
     border: none;
     border: 1px solid rgb(199, 199, 199);
     border-radius: 40px;
-   
+
 }
+
 .form__container input,
 .form__container select,
 .form__container label,
-.form__container p{
+.form__container p {
     font-size: 1.4rem;
 }
-.inputDistancia{
-    width: 520px;
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
-.select__jornada p{
+
+input[type=number] { -moz-appearance:textfield; }
+
+.inputDistancia {
+    width: 520px;
+    font-weight: 500;
+    font-size: .8vw;
+    color: #fff;
+    background-color: rgb(28, 28, 30);
+    box-shadow: 0 0 .4vw rgba(0, 0, 0, 0.5), 0 0 0 .15vw transparent;
+    border-radius: 0.4vw;
+    border: none;
+    outline: none;
+    padding: 0.4vw;
+    transition: .4s;
+}
+
+.inputDistancia:hover {
+    box-shadow: 0 0 0 .15vw rgba(135, 207, 235, 0.186);
+}
+
+.inputDistancia:focus {
+    box-shadow: 0 0 0 .15vw #5EFF63;
+}
+#send {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  #send:hover {
+    background-color: #5EFF63;
+    box-shadow: 0px 5px 5px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+  
+  #send:active {
+    transform: translateY(-1px);
+  }
+
+.select__jornada p {
+    text-align: center;
     margin-bottom: 3px;
 }
-.select__jornada label{
+
+.select__jornada label {
     padding-right: 16px;
+}
+
+/* Hide the default checkbox */
+.containerCheck input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.containerCheck {
+    display: flex;
+    margin-top: 4px;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1.3em;
+    width: 1.3em;
+    background-color: #ccc;
+    transition: all 0.3s;
+    border-radius: 5px;
+}
+
+#checkbox {
+    display: flex;
+}
+
+/* When the checkbox is checked, add a blue background */
+.containerCheck input:checked~.checkmark {
+    background-color: #5EFF63;
+    animation: pop 0.5s;
+    animation-direction: alternate;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.containerCheck input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.containerCheck .checkmark:after {
+    left: 0.45em;
+    top: 0.25em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid white;
+    border-width: 0 0.15em 0.15em 0;
+    transform: rotate(45deg);
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
