@@ -13,7 +13,7 @@ import route from "../geoJson";
 import { getOptimalRoute } from "../services/getOptimalRoute";
 import { AiFillCar } from "react-icons/ai";
 import { BiWalk } from "react-icons/bi";
-import textFormatter from "../services/utils";
+import {textFormatter,findSchool} from "../services/utils"
 
 
 const totalcoles = async()=>{
@@ -21,7 +21,7 @@ const totalcoles = async()=>{
   const totalColegios = await resp.data;
   return totalColegios;
 }
-console.log("d")
+
 export default function Map(){
   const [countReft,setCountRef]= useState(1)
     const [popupInfo, setPopupInfo] = useState(null);
@@ -34,7 +34,8 @@ export default function Map(){
     const [schoolSelect,setSchoolSelect] = useState([])
     const[methodButton, setMethodButton]=useState(false)
     const[methodSelect, setMethodSelect]=useState("")
-    console.log(location)
+    console.log(coles)
+    console.log(schoolPosition);
     useEffect(()=>{
       totalcoles().then(res=>setTotalidadColes(res));
      },[totalidadColes.length])
@@ -47,8 +48,8 @@ export default function Map(){
 
       }else{
         setColegiosCercanos(colegiosCerca(userPosition,totalidadColes))
+
       }
-      console.log("despues del segundo")
     },[location,schoolPosition])
     const pins = useMemo(
       () =>
@@ -59,6 +60,7 @@ export default function Map(){
             longitude={item.geometry[1]}
             latitude={item.geometry[0]}
             anchor="bottom"
+            scale={1.5}
             onClick={e => {
               e.originalEvent.stopPropagation();
               setPopupInfo(item);
@@ -72,7 +74,7 @@ export default function Map(){
               }
             }}
           >  
-          <img src="/resources/icons/colegio.png" width={40}/>
+          <img src="/resources/icons/colegio.png" width={45}/>
           </Marker>
         )),
       [location,coles]
@@ -98,10 +100,17 @@ export default function Map(){
                 latitude={location.lat}
                 longitude={location.lng}
                 draggable 
-                onDrag={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng, conditions:location.conditions}});setSchoolPosition([])}} 
-                color="red"
-                scale={2}
+                onDrag={(e)=>{
+                  dispatch({type:"UPDATE_LOCATION", payload:{lat:e.lngLat.lat,lng:e.lngLat.lng, conditions:location.conditions}});
+                  if(!findSchool(coles,schoolPosition)){
+                    setSchoolPosition([])
+                    setPopupInfo(null)
+                  }
+                }} 
+                
+                
             >
+              <img src="/resources/icons/user.png" width={65}/>
             </Marker>
           {pins}
           {popupInfo && (
@@ -127,7 +136,6 @@ export default function Map(){
             position='bottom-right'
             trackUserLocation
             ref={useCallback((ref)=>{
-              console.log(ref)
               if(location.conditions){
                 if(ref && countReft===1){
                   setCountRef(2);
@@ -202,7 +210,6 @@ export default function Map(){
                                 setSchoolPosition([schoolSelect[0],schoolSelect[1]])
                                 setMethodButton(!methodButton)
                                 setMethodSelect("driving")
-                                console.log(route)
                                 }}>
                                 <AiFillCar />
                               </button>
