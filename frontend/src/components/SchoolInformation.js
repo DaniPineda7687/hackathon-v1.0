@@ -2,11 +2,9 @@ import { useContext } from "react"
 import { LocationContext } from "../LocationProvider"
 import {textFormatter} from "../services/utils";
 import "../styles/InfoCards.css"
-// Object.keys(popupInfo.jornada[horari`o].escolaridad[location.conditions[0].level]).filter(pos=>pos!==undefined).map(curso=><li>{`${curso}: ${popupInfo.jornada[horario].escolaridad[location.conditions[0].level][curso]}`}</li>)`
 
 const SchoolInfo = ({popupInfo})=>{
     const [location,dispatch]= useContext(LocationContext);
-    console.log(location.conditions[0])
     return (location.conditions ?
     <>
     <h2>{textFormatter(textFormatter(popupInfo.nombre))}</h2>

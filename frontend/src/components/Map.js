@@ -36,8 +36,6 @@ export default function Map(){
     const[methodButton, setMethodButton]=useState(false)
     const[methodSelect, setMethodSelect]=useState("")
     const [mapRef,setMapRef] = useState({})
-    console.log(coles)
-    console.log(schoolPosition);
     useEffect(()=>{
       totalcoles().then(res=>setTotalidadColes(res));
      },[totalidadColes.length])
@@ -147,7 +145,7 @@ export default function Map(){
                 }
               }
             })}
-            onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude,conditions:location.conditions}}); console.log(e)}}
+            onGeolocate={(e)=>{dispatch({type:"UPDATE_LOCATION", payload:{lat:e.coords.latitude,lng:e.coords.longitude,conditions:location.conditions}})}}
           />
           <Geocoder/> 
           {
