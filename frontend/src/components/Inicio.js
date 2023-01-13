@@ -12,7 +12,7 @@ const Inicio = ()=>{
 		</ul>
 
 		<div class="main">
-			<a href="#" class="user"><button>Manual</button></a>
+			<Link to="/LoginSessionSchools" class="user"><button>Inicio Sesion Colegios</button></Link>
 		</div>
 	    </header>
 	    <div class="container">
